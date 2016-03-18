@@ -42,11 +42,24 @@ ORDER BY LENGTH(dept_name) DESC;
 WHERE to_date = '9999-1-1'
    AND salary > 120000;    
 
+--문제9
+  SELECT DISTINCT title
+    FROM titles
+ORDER BY LENGTH(title) DESC;	
+		
 --문제10
- SELECT count(*)
-  FROM title
-WHERE to_date = '9999-1-1'
-    AND   
+SELECT count(*)
+  FROM titles
+ WHERE to_date = '9999-1-1'
+   AND title = 'Engineer';   
+
+--문제11
+  SELECT title, from_date, to_date
+    FROM titles
+   WHERE emp_no = 13250
+ORDER BY from_date ASC;    
 
 
+	   
+	   
 	   
