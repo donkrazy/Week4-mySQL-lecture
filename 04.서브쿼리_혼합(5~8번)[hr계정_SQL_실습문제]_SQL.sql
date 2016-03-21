@@ -1,5 +1,29 @@
 -- 문제5
-
+SELECT a.emp_no, CONCAT(first_name, ' ', last_name) AS name, c.title, d.salary
+  FROM employees a,
+       dept_emp b,
+	   titles c,
+	   salaries d,
+	   ( SELECT dept_no, MAX( avg_salary )
+           FROM (  SELECT b.dept_no, ROUND( AVG( d.salary ) ) AS avg_salary
+                     FROM employees a,
+                          dept_emp b,
+	                      departments c,
+  	                      salaries d
+                    WHERE a.emp_no = b.emp_no
+                      AND b.dept_no = c.dept_no
+                      AND a.emp_no = d.emp_no
+                      AND b.to_date = '9999-1-1'
+                      AND d.to_date = '9999-1-1'
+                 GROUP BY b.dept_no ) k ) e
+WHERE a.emp_no = b.emp_no
+  AND a.emp_no = c.emp_no
+  AND a.emp_no = d.emp_no
+  AND b.dept_no = e.dept_no
+  AND b.to_date = '9999-1-1'
+  AND c.to_date = '9999-1-1'
+  AND d.to_date = '9999-1-1';
+ 											  
 
 
 -- 문제6
