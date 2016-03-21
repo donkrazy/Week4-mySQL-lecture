@@ -89,8 +89,8 @@ ORDER BY name ASC;
 ORDER BY b.salary DESC;		
 
 --문제9
-     SELECT c.dept_no AS '부서번호',
-			   AVG(d.salary) AS '부서별 평균 연봉'
+     SELECT c.dept_no,
+			   AVG(d.salary) AS avg_sal
       FROM employees AS a, 
 	           dept_emp AS b,
 			   departments AS c,
@@ -101,11 +101,11 @@ ORDER BY b.salary DESC;
         AND b.to_date = '9999-1-1'
 		AND d.to_date = '9999-1-1'
 GROUP BY c.dept_no
-ORDER BY '부서별 평균 연봉' DESC;
+ORDER BY avg_sal DESC;
 
 --문제10
-     SELECT b.title AS '직책',
-	 			AVG(salary) AS '직책별 평균 연봉'
+     SELECT b.title,
+	 			AVG(salary) AS avg_sal
       FROM employees AS a, 
 			   titles AS b,
 			   salaries AS c
@@ -114,6 +114,6 @@ ORDER BY '부서별 평균 연봉' DESC;
         AND b.to_date = '9999-1-1'
 		AND c.to_date = '9999-1-1'
 GROUP BY b.title		
-ORDER BY '부서별 평균 연봉' DESC; 
+ORDER BY avg_sal DESC; 
  
 
