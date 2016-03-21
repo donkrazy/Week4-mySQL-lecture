@@ -37,7 +37,8 @@ SELECT e.emp_no, CONCAT(e.last_name, ' ', e.first_name) AS '이름', t.title
 -- join ~ on
 
 SELECT e.emp_no, CONCAT(e.last_name, ' ', e.first_name) AS '이름', t.title
-  FROM employees e JOIN titles t ON e.emp_no = t.emp_no
+  FROM employees e 
+   JOIN titles t ON e.emp_no = t.emp_no
  WHERE t.to_date = '9999-1-1' AND e.gender = 'f' AND t.title = 'Engineer';
 
 

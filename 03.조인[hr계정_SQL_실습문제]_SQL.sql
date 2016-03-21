@@ -115,5 +115,6 @@ ORDER BY avg_sal DESC;
 		AND c.to_date = '9999-1-1'
 GROUP BY b.title		
 ORDER BY avg_sal DESC; 
- 
+
+    
 
