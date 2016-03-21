@@ -75,7 +75,7 @@ ORDER BY name ASC;
 
 --문제8
     SELECT a.emp_no,
-               CONCAT(a.first_name, ' ', a.last_name) AS name,
+               CONCAT(a.first_name, ' ', a.last_name) name,
 			   c.title,
 			   b.salary
       FROM employees a, 
@@ -89,31 +89,31 @@ ORDER BY name ASC;
 ORDER BY b.salary DESC;		
 
 --문제9
-     SELECT c.dept_no,
-			   AVG(d.salary)
-      FROM employees a, 
-	           dept_emp b,
-			   departments c,
-			   salaries d
+     SELECT c.dept_no AS '부서번호',
+			   AVG(d.salary) AS '부서별 평균 연봉'
+      FROM employees AS a, 
+	           dept_emp AS b,
+			   departments AS c,
+			   salaries AS d
     WHERE a.emp_no = b.emp_no
 	    AND b.dept_no = c.dept_no
 	    AND a.emp_no = d.emp_no
         AND b.to_date = '9999-1-1'
 		AND d.to_date = '9999-1-1'
 GROUP BY c.dept_no
-ORDER BY AVG(d.salary) DESC;
+ORDER BY '부서별 평균 연봉' DESC;
 
 --문제10
-     SELECT b.title,
-	 			AVG(salary) AS AVG__DEPARTMENTS_SALARY
-      FROM employees a, 
-			   titles b,
-			   salaries c
+     SELECT b.title AS '직책',
+	 			AVG(salary) AS '직책별 평균 연봉'
+      FROM employees AS a, 
+			   titles AS b,
+			   salaries AS c
     WHERE a.emp_no = b.emp_no
 		AND a.emp_no = c.emp_no  
         AND b.to_date = '9999-1-1'
 		AND c.to_date = '9999-1-1'
 GROUP BY b.title		
-ORDER BY AVG__DEPARTMENTS_SALARY DESC; 
+ORDER BY '부서별 평균 연봉' DESC; 
  
 
