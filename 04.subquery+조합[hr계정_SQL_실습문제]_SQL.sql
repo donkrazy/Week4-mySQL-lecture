@@ -17,6 +17,7 @@ SELECT COUNT(*)
          d.max_salary
     FROM employees a,
          dept_emp b,
+		 salaries e,
          departments c,
          (  SELECT b.dept_no, max(c.salary) AS max_salary
               FROM employees a, dept_emp b, salaries c
@@ -25,10 +26,13 @@ SELECT COUNT(*)
                    AND b.to_date = '9999-1-1'
                    AND c.to_date = '9999-1-1'
           GROUP BY b.dept_no) d
-   WHERE     a.emp_no = b.emp_no
+   WHERE    a.emp_no = b.emp_no
          AND b.dept_no = c.dept_no
          AND c.dept_no = d.dept_no
+		 AND a.emp_no = e.emp_no
+		 AND e.salary = d.max_salary
          AND b.to_date = '9999-1-1'
+		 AND e.to_date = '9999-1-1'
 ORDER BY d.max_salary DESC;
 
 --문제3
@@ -72,7 +76,7 @@ SELECT a.emp_no,
        AND b.to_date = '9999-1-1';
 
 
--- 문제5
+-- 문제5 X
 SELECT a.emp_no, CONCAT(first_name, ' ', last_name) AS name, c.title, d.salary
   FROM employees a,
        dept_emp b,
